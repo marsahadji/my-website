@@ -3,10 +3,13 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { motion } from 'framer-motion';
-import { Home } from 'lucide-react';
+import { Home, ArrowLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import TechBackground from '@/components/ui/TechBackground';
 
 export default function GlobalNotFound() {
+  const router = useRouter();
+
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen px-6 text-center overflow-hidden">
       <TechBackground />
@@ -43,12 +46,23 @@ export default function GlobalNotFound() {
           </p>
         </div>
 
-        <Button asChild variant="primary" size="lg" className="rounded-full px-12 group">
-          <Link href="/" className="gap-3">
-            <Home className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
-            Retour à la base / Return to Base
-          </Link>
-        </Button>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Button asChild variant="primary" size="lg" className="rounded-full px-12 group">
+            <Link href="/" className="gap-3">
+              <Home className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
+              Retour à la base / Home
+            </Link>
+          </Button>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="rounded-full px-12 group"
+            onClick={() => router.back()}
+          >
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            Page précédente / Go Back
+          </Button>
+        </div>
       </motion.div>
 
       {/* Decorative Glitch lines */}

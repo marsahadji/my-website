@@ -92,5 +92,14 @@
         "link": "#"
       }
     ]
+  },
+  "contact": {
+    "title": "Let's start a conversation",
+    "subtitle": "Let's connect",
+    "intro": "Whether it's for a complex project, a technical audit, or a collaboration opportunity, I'm at your service.",
+    "email_label": "Direct Email",
+    "location_label": "Location",
+    "availability_label": "Availability",
+    "availability_status": "Currently available for new projects."
   }
 }
