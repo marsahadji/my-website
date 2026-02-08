@@ -1,5 +1,7 @@
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypePrettyCode from 'rehype-pretty-code';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 interface MDXContentProps {
   source: string;
@@ -9,6 +11,16 @@ const options: any = {
   mdxOptions: {
     remarkPlugins: [],
     rehypePlugins: [
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: 'wrap',
+          properties: {
+            className: ['anchor'],
+          },
+        },
+      ],
       [
         rehypePrettyCode,
         {

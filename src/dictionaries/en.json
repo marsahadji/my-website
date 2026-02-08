@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Building Digital Sovereignty in Africa.",
+    "subtitle": "Software & Data Architect. I help companies and institutions build resilient systems.",
+    "cta_primary": "Read my analysis",
+    "cta_secondary": "Contact me"
+  },
+  "problems": {
+    "title1": "Architectural Complexity",
+    "desc1": "Simplifying legacy systems for real scalability without stifling technical debt.",
+    "title2": "Data Silos",
+    "desc2": "Unifying and leveraging data for fact-based decision making, not intuitions.",
+    "title3": "Performance & Resilience",
+    "desc3": "Critical optimization for infrastructures capable of supporting African market growth."
+  },
+  "footer": {
+    "description": "Software Architect specializing in resilient systems and digital sovereignty. Building Africa's technological future.",
+    "rights": "All rights reserved.",
+    "legal": "Legal Mentions",
+    "privacy": "Privacy"
+  },
+  "about": {
+    "title": "Architect of Resilient Systems",
+    "bio": "Based in Lomé, I support organizations in their digital transformation by implementing robust and sovereign software architectures. My approach combines technical rigor and strategic vision to build the continent's technological future.",
+    "timeline_title": "Journey",
+    "timeline": [
+      { "year": "2024", "title": "Sovereignty Expertise", "description": "Launching in-depth research on local infrastructures." },
+      { "year": "2022", "title": "Data Architecture", "description": "Designing data pipelines for financial institutions." },
+      { "year": "2019", "title": "The Beginning", "description": "Developing SaaS solutions for the West African market." }
+    ],
+    "stack_title": "Technical Expertise",
+    "stack": [
+      { "category": "Frontend", "items": ["Next.js", "TypeScript", "Tailwind CSS", "React"] },
+      { "category": "Backend", "items": ["Node.js", "Python", "Go", "PostgreSQL"] },
+      { "category": "DevOps", "items": ["Docker", "Kubernetes", "AWS", "CI/CD"] }
+    ]
+  }
+}

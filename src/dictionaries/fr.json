@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "about": "À Propos",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Construire la souveraineté numérique en Afrique.",
+    "subtitle": "Architecte Logiciel & Data. J'aide les entreprises et les institutions à bâtir des systèmes résilients.",
+    "cta_primary": "Lire mes analyses",
+    "cta_secondary": "Me contacter"
+  },
+  "problems": {
+    "title1": "Complexité Architecturale",
+    "desc1": "Simplification des systèmes hérités pour une scalabilité réelle sans dette technique étouffante.",
+    "title2": "Silo de Données",
+    "desc2": "Unification et valorisation des données pour une prise de décision basée sur des faits, pas sur des intuitions.",
+    "title3": "Performance & Résilience",
+    "desc3": "Optimisation critique pour des infrastructures capables de supporter la croissance du marché africain."
+  },
+  "footer": {
+    "description": "Architecte Logiciel spécialisé dans les systèmes résilients et la souveraineté numérique. Bâtir le futur technologique de l'Afrique.",
+    "rights": "Tous droits réservés.",
+    "legal": "Mentions Légales",
+    "privacy": "Confidentialité"
+  },
+  "about": {
+    "title": "Architecte de Systèmes Résilients",
+    "bio": "Basé à Lomé, j'accompagne les organisations dans leur transformation numérique par la mise en place d'architectures logicielles robustes et souveraines. Mon approche mêle rigueur technique et vision stratégique pour bâtir le futur technologique du continent.",
+    "timeline_title": "Parcours",
+    "timeline": [
+      { "year": "2024", "title": "Expertise Souveraineté", "description": "Lancement de recherches approfondies sur les infrastructures locales." },
+      { "year": "2022", "title": "Architecture Data", "description": "Conception de pipelines de données pour des institutions financières." },
+      { "year": "2019", "title": "Début de l'Aventure", "description": "Développement de solutions SaaS pour le marché ouest-africain." }
+    ],
+    "stack_title": "Expertise Technique",
+    "stack": [
+      { "category": "Frontend", "items": ["Next.js", "TypeScript", "Tailwind CSS", "React"] },
+      { "category": "Backend", "items": ["Node.js", "Python", "Go", "PostgreSQL"] },
+      { "category": "DevOps", "items": ["Docker", "Kubernetes", "AWS", "CI/CD"] }
+    ]
+  }
+}
