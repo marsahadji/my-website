@@ -101,5 +101,10 @@
     "location_label": "Localisation",
     "availability_label": "Disponibilité",
     "availability_status": "Actuellement disponible pour de nouveaux projets."
+  },
+  "legal": {
+    "privacy_title": "Politique de Confidentialité",
+    "mentions_title": "Mentions Légales",
+    "last_updated": "Dernière mise à jour"
   }
 }

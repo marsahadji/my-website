@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
-import TechBackground from "@/components/ui/TechBackground";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,12 +27,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth">
+    <html lang="fr" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${merriweather.variable} font-sans antialiased bg-background text-foreground min-h-screen relative`}
       >
-        <TechBackground />
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

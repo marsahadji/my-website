@@ -1,28 +1,44 @@
+'use client';
+
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 
-export default function Footer() {
+interface FooterProps {
+  dict: {
+    footer: {
+      description: string;
+      rights: string;
+      legal: string;
+      privacy: string;
+    };
+  };
+}
+
+export default function Footer({ dict }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const params = useParams();
+  const lang = params.lang as string;
   
   return (
     <footer className="w-full border-t border-border bg-background py-16">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
-            <Link href="/" className="text-2xl font-serif font-bold text-primary tracking-tight mb-4 block">
+            <Link href={`/${lang}`} className="text-2xl font-serif font-bold text-primary tracking-tight mb-4 block">
               Martial Ahadji
             </Link>
             <p className="text-muted-foreground max-w-sm leading-relaxed">
-              Architecte Logiciel spécialisé dans les systèmes résilients et la souveraineté numérique. Bâtir le futur technologique de l&apos;Afrique.
+              {dict.footer.description}
             </p>
           </div>
           
           <div>
             <h4 className="font-bold uppercase tracking-widest text-xs text-primary mb-6">Navigation</h4>
             <ul className="space-y-4 text-sm">
-              <li><Link href="/about" className="text-muted-foreground hover:text-accent transition-colors">À propos</Link></li>
-              <li><Link href="/blog" className="text-muted-foreground hover:text-accent transition-colors">Blog</Link></li>
-              <li><Link href="/contact" className="text-muted-foreground hover:text-accent transition-colors">Contact</Link></li>
+              <li><Link href={`/${lang}/about`} className="text-muted-foreground hover:text-accent transition-colors">À propos</Link></li>
+              <li><Link href={`/${lang}/blog`} className="text-muted-foreground hover:text-accent transition-colors">Blog</Link></li>
+              <li><Link href={`/${lang}/contact`} className="text-muted-foreground hover:text-accent transition-colors">Contact</Link></li>
             </ul>
           </div>
           
@@ -44,11 +60,11 @@ export default function Footer() {
         
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-sm text-muted-foreground">
-            © {currentYear} Martial Ahadji. Tous droits réservés.
+            © {currentYear} Martial Ahadji. {dict.footer.rights}
           </div>
           <div className="flex gap-8 text-[10px] uppercase tracking-widest font-bold text-muted-foreground">
-            <Link href="/legal" className="hover:text-primary transition-colors">Mentions Légales</Link>
-            <Link href="/privacy" className="hover:text-primary transition-colors">Confidentialité</Link>
+            <Link href={`/${lang}/legal/mentions`} className="hover:text-primary transition-colors">{dict.footer.legal}</Link>
+            <Link href={`/${lang}/legal/privacy`} className="hover:text-primary transition-colors">{dict.footer.privacy}</Link>
           </div>
         </div>
       </div>
