@@ -4,62 +4,57 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { motion } from 'framer-motion';
 import { Home } from 'lucide-react';
+import TechBackground from '@/components/ui/TechBackground';
 
-export default function NotFound() {
+export default function GlobalNotFound() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] px-6 text-center">
+    <div className="relative flex flex-col items-center justify-center min-h-screen px-6 text-center overflow-hidden">
+      <TechBackground />
+      
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="z-10"
       >
-        <h1 className="text-9xl font-serif font-black text-primary/10 select-none">
-          404
-        </h1>
-        <div className="relative -mt-16 mb-8">
-          <h2 className="text-3xl font-serif font-bold text-primary">
-            Donnée introuvable
-          </h2>
-          <div className="flex justify-center mt-4">
-            <motion.div 
-              className="h-1 w-12 bg-accent rounded-full"
-              animate={{ 
-                width: [48, 80, 48],
-                opacity: [0.5, 1, 0.5]
-              }}
-              transition={{ 
-                duration: 2, 
-                repeat: Infinity,
-                ease: "easeInOut" 
-              }}
-            />
-          </div>
-        </div>
+        <motion.div
+          animate={{ 
+            y: [0, -20, 0],
+            rotate: [0, 1, -1, 0]
+          }}
+          transition={{ 
+            duration: 6, 
+            repeat: Infinity,
+            ease: "easeInOut" 
+          }}
+        >
+          <h1 className="text-[12rem] md:text-[18rem] font-serif font-black text-primary/10 select-none leading-none">
+            404
+          </h1>
+        </motion.div>
         
-        <p className="text-lg text-muted-foreground max-w-md mx-auto mb-10">
-          Il semble que cette donnée soit manquante dans l&apos;architecture de ce site. 
-          Le chemin a peut-être été déplacé ou supprimé.
-        </p>
+        <div className="relative -mt-12 md:-mt-20 mb-12">
+          <h2 className="text-2xl md:text-4xl font-serif font-bold text-primary mb-4">
+            Donnée introuvable / Data not found
+          </h2>
+          <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed">
+            Le système ne peut résoudre cette requête. <br className="hidden md:block" />
+            The system cannot resolve this request.
+          </p>
+        </div>
 
-        <Button asChild variant="primary" size="lg">
-          <Link href="/" className="gap-2">
-            <Home className="w-4 h-4" />
-            Retour à l&apos;accueil
+        <Button asChild variant="primary" size="lg" className="rounded-full px-12 group">
+          <Link href="/" className="gap-3">
+            <Home className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" />
+            Retour à la base / Return to Base
           </Link>
         </Button>
       </motion.div>
 
-      {/* Background visual element for 404 */}
-      <div className="absolute inset-0 -z-20 flex items-center justify-center opacity-[0.03] pointer-events-none select-none overflow-hidden">
-        <div className="font-mono text-[10px] leading-none whitespace-pre rotate-12">
-          {Array.from({ length: 50 }).map((_, i) => (
-            <div key={i}>
-              {Array.from({ length: 100 }).map((_, j) => (
-                Math.random() > 0.8 ? '0 ' : '1 '
-              ))}
-            </div>
-          ))}
-        </div>
+      {/* Decorative Glitch lines */}
+      <div className="absolute inset-0 pointer-events-none opacity-20">
+        <div className="absolute top-1/4 left-0 w-full h-[1px] bg-accent/20 animate-pulse" />
+        <div className="absolute top-3/4 left-0 w-full h-[1px] bg-primary/20 animate-pulse delay-700" />
       </div>
     </div>
   );

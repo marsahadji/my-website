@@ -2,7 +2,9 @@
   "nav": {
     "about": "About",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "services": "Services",
+    "projects": "Projects"
   },
   "hero": {
     "title": "Building Digital Sovereignty in Africa.",
@@ -38,6 +40,57 @@
       { "category": "Frontend", "items": ["Next.js", "TypeScript", "Tailwind CSS", "React"] },
       { "category": "Backend", "items": ["Node.js", "Python", "Go", "PostgreSQL"] },
       { "category": "DevOps", "items": ["Docker", "Kubernetes", "AWS", "CI/CD"] }
+    ]
+  },
+  "services": {
+    "title": "What I do",
+    "subtitle": "Expertise & Rigor",
+    "intro": "I work on complex projects where reliability and performance are critical.",
+    "items": [
+      {
+        "title": "Consulting & Architecture",
+        "description": "Systems audit, cloud architecture design, and digital sovereignty strategies.",
+        "icon": "Layers"
+      },
+      {
+        "title": "Custom Development",
+        "description": "Building robust SaaS, complex web applications, and data platforms.",
+        "icon": "Code"
+      },
+      {
+        "title": "Training & Mentorship",
+        "description": "Supporting technical teams and mentoring senior developers.",
+        "icon": "Users"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Software & Architectures",
+    "intro": "Demonstrating through practice. Here are the systems I build.",
+    "status_live": "Live",
+    "status_building": "Building",
+    "items": [
+      {
+        "title": "Notaris",
+        "description": "Secure notary management platform enabling the digitalization of deeds.",
+        "stack": ["Next.js", "MongoDB", "Tailwind"],
+        "status": "Live",
+        "link": "https://notaris.tg"
+      },
+      {
+        "title": "FactuPro",
+        "description": "Simplified billing and accounting tool for African SMEs.",
+        "stack": ["React", "Node.js", "PostgreSQL"],
+        "status": "Building",
+        "link": "#"
+      },
+      {
+        "title": "School App",
+        "description": "Comprehensive school management system, from enrollment to report cards.",
+        "stack": ["Next.js", "Firebase", "Lucide"],
+        "status": "Live",
+        "link": "#"
+      }
     ]
   }
 }

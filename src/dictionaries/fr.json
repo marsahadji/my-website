@@ -2,7 +2,9 @@
   "nav": {
     "about": "À Propos",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "services": "Services",
+    "projects": "Projets"
   },
   "hero": {
     "title": "Construire la souveraineté numérique en Afrique.",
@@ -38,6 +40,57 @@
       { "category": "Frontend", "items": ["Next.js", "TypeScript", "Tailwind CSS", "React"] },
       { "category": "Backend", "items": ["Node.js", "Python", "Go", "PostgreSQL"] },
       { "category": "DevOps", "items": ["Docker", "Kubernetes", "AWS", "CI/CD"] }
+    ]
+  },
+  "services": {
+    "title": "Ce que je fais",
+    "subtitle": "Expertise & Rigueur",
+    "intro": "J'interviens sur des projets complexes où la fiabilité et la performance sont critiques.",
+    "items": [
+      {
+        "title": "Conseil & Architecture",
+        "description": "Audit de systèmes, conception d'architectures cloud et stratégies de souveraineté numérique.",
+        "icon": "Layers"
+      },
+      {
+        "title": "Développement sur Mesure",
+        "description": "Création de SaaS robustes, applications web complexes et plateformes de données.",
+        "icon": "Code"
+      },
+      {
+        "title": "Formation & Mentorat",
+        "description": "Accompagnement d'équipes techniques et mentoring de développeurs senior.",
+        "icon": "Users"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Logiciels & Architectures",
+    "intro": "Démontrer par la pratique. Voici les systèmes que je construis.",
+    "status_live": "En ligne",
+    "status_building": "En construction",
+    "items": [
+      {
+        "title": "Notaris",
+        "description": "Plateforme de gestion notariale sécurisée permettant la dématérialisation des actes.",
+        "stack": ["Next.js", "MongoDB", "Tailwind"],
+        "status": "Live",
+        "link": "https://notaris.tg"
+      },
+      {
+        "title": "FactuPro",
+        "description": "Outil de facturation et de comptabilité simplifié pour les PME africaines.",
+        "stack": ["React", "Node.js", "PostgreSQL"],
+        "status": "Building",
+        "link": "#"
+      },
+      {
+        "title": "School App",
+        "description": "Système complet de gestion scolaire, des inscriptions aux bulletins de notes.",
+        "stack": ["Next.js", "Firebase", "Lucide"],
+        "status": "Live",
+        "link": "#"
+      }
     ]
   }
 }
