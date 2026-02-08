@@ -1,25 +1,38 @@
 import { ShieldCheck, Database, Zap } from 'lucide-react';
 import FadeIn from '@/components/animations/fade-in';
 
-const problems = [
-  {
-    title: "Complexité Architecturale",
-    description: "Simplification des systèmes hérités pour une scalabilité réelle sans dette technique étouffante.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Silo de Données",
-    description: "Unification et valorisation des données pour une prise de décision basée sur des faits, pas sur des intuitions.",
-    icon: Database,
-  },
-  {
-    title: "Performance & Résilience",
-    description: "Optimisation critique pour des infrastructures capables de supporter la croissance du marché africain.",
-    icon: Zap,
-  }
-];
+interface ProblemsProps {
+  dict: {
+    problems: {
+      title1: string;
+      desc1: string;
+      title2: string;
+      desc2: string;
+      title3: string;
+      desc3: string;
+    };
+  };
+}
 
-export default function Problems() {
+export default function Problems({ dict }: ProblemsProps) {
+  const problems = [
+    {
+      title: dict.problems.title1,
+      description: dict.problems.desc1,
+      icon: ShieldCheck,
+    },
+    {
+      title: dict.problems.title2,
+      description: dict.problems.desc2,
+      icon: Database,
+    },
+    {
+      title: dict.problems.title3,
+      description: dict.problems.desc3,
+      icon: Zap,
+    }
+  ];
+
   return (
     <section className="py-24 bg-transparent border-t border-border">
       <div className="container mx-auto px-6 md:px-12">

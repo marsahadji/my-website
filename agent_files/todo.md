@@ -1,77 +1,75 @@
-# TASK: ARCHITECTURAL REFACTORING - I18N & THEMING
-# CONTEXT: The client requires a bilingual site (FR/EN) and Dark Mode support.
-# IMPACT: High. Requires moving files and installing providers.
+# TASK: UI POLISH (SCROLL UX) & MONGODB TRAINING LANDING PAGE
+# CONTEXT: 
+#   - We need to improve long-page navigation (Back to Top).
+#   - The training page is NOT generic. It is a high-level course on "MongoDB Architecture & Performance".
+#   - The user is an Expert Architect, not just a trainer.
 
 technical_stack:
-  libraries_to_install:
-    - "next-themes" # For light/dark mode
-    - "lucide-react" # Icons for toggles
-    - "negotiator" # For language detection (optional but good)
-    - "@formatjs/intl-localematcher" # For locale matching
-
-design_specifications:
-  dark_mode_palette:
-    background: "hsl(222, 47%, 11%)" # Deep Midnight Blue (#0f172a)
-    text: "hsl(210, 40%, 98%)" # Off-white
-    accent: "hsl(142, 70%, 50%)" # Neon Green/Emerald for visibility
-    grid_pattern: "Opacity should drop to 5% white in dark mode."
-
-  i18n_strategy:
-    default_locale: "fr"
-    locales: ["fr", "en"]
-    method: "Middleware + Dictionary Pattern (Server Components)"
+  libraries:
+    - "framer-motion" (Essential for the scroll button visibility animation)
+    - "lucide-react" (Arrow icons, Database icons)
+    - "react-accessible-accordion" (Optional, or build custom)
 
 implementation_steps:
 
-  # --- STEP 1: THEMING SETUP ---
-  - action: "update_config"
-    path: "tailwind.config.ts"
-    instruction: "Ensure darkMode is set to 'class'. Update theme colors to use CSS variables correctly defined in globals.css."
+  # --- STEP 1: BACK TO TOP BUTTON (UX) ---
+  - action: "create_component"
+    path: "components/ui/back-to-top.tsx"
+    description: "A floating button that appears when the user scrolls down."
+    instructions: |
+      1. Use 'use client'.
+      2. Use 'framer-motion' (useScroll or AnimatePresence).
+      3. Logic: 
+         - Hide initially.
+         - Show when window.scrollY > 400px.
+         - On Click: window.scrollTo({ top: 0, behavior: 'smooth' }).
+      4. Design:
+         - Circular button, fixed bottom-8 right-8 (z-50).
+         - Color: Primary or Accent (Vert Forêt) to stand out.
+         - Icon: ArrowUp from Lucide.
+         - Animation: Scale in/out cleanly.
+      5. Add this component to `app/[lang]/layout.tsx` so it's global.
 
-  - action: "create_file"
-    path: "components/providers/theme-provider.tsx"
-    instruction: "Create a Client Component wrapping 'next-themes' ThemeProvider."
-
-  - action: "update_file"
-    path: "app/layout.tsx"
-    instruction: "Wrap the children in <ThemeProvider attribute='class' defaultTheme='light' enableSystem>."
+  # --- STEP 2: MONGODB TRAINING PAGE (Landing Page) ---
+  - action: "update_dictionary"
+    path: "dictionaries/fr.json & en.json"
+    instructions: |
+      Add "training":
+      - "hero_title": "MongoDB : Architecture & Performance."
+      - "value_prop": "Ne subissez plus vos données. Concevez des schémas NoSQL scalables et résilients."
+      - "curriculum_title": "Le Programme Expert"
+      - "cta_waitlist": "Rejoindre la liste d'attente (Session 2026)"
 
   - action: "create_component"
-    path: "components/ui/theme-toggle.tsx"
-    instruction: "A simple icon button (Sun/Moon) using useTheme() to switch modes. Must be a Client Component."
+    path: "components/training/curriculum-accordion.tsx"
+    description: "A clean accordion list showing the MongoDB modules."
+    content: |
+      - Module 1: Thinking in Documents (Schema Design & Patterns).
+      - Module 2: Indexing & Performance Tuning (Explain Plans).
+      - Module 3: Architecture (Replica Sets, Sharding, Atlas).
+      - Module 4: Aggregation Framework Mastery.
 
-  # --- STEP 2: I18N STRUCTURE (THE BIG MOVE) ---
-  - action: "create_file"
-    path: "middleware.ts"
-    instruction: "Create middleware to detect browser language and redirect to /[lang]/... if missing. Default to 'fr'."
+  - action: "create_component"
+    path: "components/training/waitlist-form.tsx"
+    description: "A specialized form for the MongoDB training interest list."
+    instructions: |
+      1. Input: Email.
+      2. Submit Button: "M'alerter lors de l'ouverture".
+      3. Design: Use a 'Database' icon or subtle data-grid background.
 
-  - action: "create_dictionaries"
-    path: "dictionaries/"
-    files:
-      - "fr.json": { "hero": { "title": "Construire la souveraineté...", "role": "Architecte Logiciel..." }, "nav": { "about": "À Propos", "blog": "Blog" } }
-      - "en.json": { "hero": { "title": "Building Digital Sovereignty...", "role": "Software Architect..." }, "nav": { "about": "About", "blog": "Blog" } }
-
-  - action: "create_utility"
-    path: "lib/get-dictionary.ts"
-    instruction: "Async function to load the correct JSON based on the 'lang' parameter."
-
-  - action: "move_files"
-    instruction: "Move 'app/page.tsx' inside a new folder 'app/[lang]/page.tsx'. Update the component to explicitely accept { params: { lang } }."
-
-  # --- STEP 3: UI UPDATES ---
-  - action: "update_component"
-    path: "components/layout/header.tsx"
-    instruction: |
-      1. Add the ThemeToggle.
-      2. Add a LanguageSwitcher (Dropdown or Toggle FR/EN) that simply redirects to the new URL path.
-      3. Use the Dictionary for nav links text instead of hardcoded strings.
-
-  - action: "update_component"
-    path: "app/[lang]/page.tsx" (formerly app/page.tsx)
-    instruction: "Replace hardcoded text (Hero title, Bio) with variables from the dictionary."
+  - action: "create_page"
+    path: "app/[lang]/formation/mongodb/page.tsx"
+    instructions: |
+      1. Layout: High-conversion Landing Page.
+      2. Hero Section: "Maîtrisez la base de données moderne." (Typography: Merriweather).
+      3. Pain Points: "Pourquoi vos requêtes sont lentes ?" / "Pourquoi le relationnel ne suffit plus ?".
+      4. Solution: Your expertise as an Architect (not just a dev).
+      5. Curriculum Section: Use the Accordion component.
+      6. CTA Section: The Waitlist Form.
+      7. *Design Note:* Use the 'TechBackground' but emphasize the "Green" accent (MongoDB brand color is green, which fits perfectly with your Forest Green theme).
 
 verification_checklist:
-  - "Does the URL change to /fr or /en?"
-  - "Does switching language update the text immediately?"
-  - "Does Dark Mode persist on reload?"
-  - "Is the TechBackground visible but subtle in Dark Mode?"
+  - "Does the Back-to-Top button work smoothly?"
+  - "Is the Training page clearly focused on MongoDB Architecture?"
+  - "Does the Green accent color pop on this page (realling strictly with Mongo brand)?"
+  - "Is the URL /formation/mongodb accessible?"

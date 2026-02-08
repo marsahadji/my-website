@@ -7,15 +7,21 @@ import FadeIn from '@/components/animations/fade-in';
 import { Calendar, Tag, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { getDictionary } from "@/lib/get-dictionary";
 
 export async function generateStaticParams() {
+  const locales = ['en', 'fr'];
   const slugs = getPostSlugs();
-  return slugs.map((slug) => ({
-    slug: slug.replace(/\.mdx?$/, ''),
-  }));
+  
+  return locales.flatMap((lang) => 
+    slugs.map((slug) => ({
+      lang,
+      slug: slug.replace(/\.mdx?$/, ''),
+    }))
+  );
 }
 
-export async function generateMetadata(props: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata(props: { params: Promise<{ lang: string, slug: string }> }) {
   const params = await props.params;
   try {
     const post = getPostBySlug(params.slug);
@@ -30,35 +36,36 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   }
 }
 
-export default async function PostPage(props: { params: Promise<{ slug: string }> }) {
-  const params = await props.params;
+export default async function PostPage(props: { params: Promise<{ lang: string, slug: string }> }) {
+  const { lang, slug } = await props.params;
+  const dict = await getDictionary(lang as 'en' | 'fr');
   let post;
   
   try {
-    post = getPostBySlug(params.slug);
+    post = getPostBySlug(slug);
   } catch (e) {
     notFound();
   }
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Header dict={dict} />
       <main className="flex-grow py-12 md:py-20">
         <article className="container mx-auto px-6 md:px-12">
           <FadeIn>
             <div className="max-w-3xl mx-auto mb-12">
               <Link 
-                href="/blog" 
+                href={`/${lang}/blog`}
                 className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-accent mb-12 transition-colors"
               >
                 <ChevronLeft className="w-4 h-4" />
-                Retour au blog
+                {lang === 'en' ? "Back to blog" : "Retour au blog"}
               </Link>
 
               <div className="flex items-center gap-4 mb-6 text-xs text-muted-foreground uppercase tracking-widest font-bold">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="w-3.5 h-3.5" />
-                  {new Date(post.metadata.date).toLocaleDateString('fr-FR', {
+                  {new Date(post.metadata.date).toLocaleDateString(lang === 'en' ? 'en-US' : 'fr-FR', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
@@ -95,7 +102,7 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
           </FadeIn>
         </article>
       </main>
-      <Footer />
+      <Footer dict={dict} />
     </div>
   );
 }

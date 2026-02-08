@@ -3,27 +3,37 @@ import PostCard from '@/components/blog/PostCard';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import FadeIn from '@/components/animations/fade-in';
+import { getDictionary } from "@/lib/get-dictionary";
 
-export const metadata = {
-  title: "Blog | Martial Ahadji",
-  description: "Analyses techniques, architecture logicielle et réflexions sur la tech en Afrique.",
-};
+export async function generateMetadata(props: { params: Promise<{ lang: string }> }) {
+  const { lang } = await props.params;
+  return {
+    title: lang === 'en' ? "Blog | Martial Ahadji" : "Blog | Martial Ahadji",
+    description: lang === 'en' ? "Technical analysis, software architecture and thoughts on tech in Africa." : "Analyses techniques, architecture logicielle et réflexions sur la tech en Afrique.",
+  };
+}
 
-export default function BlogIndex() {
+export default async function BlogIndex(props: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await props.params;
+  const dict = await getDictionary(lang as 'en' | 'fr');
   const posts = getAllPosts();
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Header dict={dict} />
       <main className="flex-grow py-20">
         <div className="container mx-auto px-6 md:px-12">
           <FadeIn>
             <div className="max-w-3xl mb-16">
               <h1 className="text-4xl md:text-6xl font-serif font-bold text-primary mb-6">
-                Le Blog.
+                {lang === 'en' ? "The Blog." : "Le Blog."}
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Partage d&apos;expérience sur l&apos;architecture logicielle, la data et les enjeux de la souveraineté numérique.
+                {lang === 'en' 
+                  ? "Sharing experience on software architecture, data and digital sovereignty issues." 
+                  : "Partage d'expérience sur l'architecture logicielle, la data et les enjeux de la souveraineté numérique."}
               </p>
             </div>
           </FadeIn>
@@ -39,13 +49,13 @@ export default function BlogIndex() {
           {posts.length === 0 && (
             <div className="text-center py-20">
               <p className="text-muted-foreground text-lg">
-                Aucun article publié pour le moment.
+                {lang === 'en' ? "No posts published yet." : "Aucun article publié pour le moment."}
               </p>
             </div>
           )}
         </div>
       </main>
-      <Footer />
+      <Footer dict={dict} />
     </div>
   );
 }
