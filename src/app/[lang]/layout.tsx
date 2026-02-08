@@ -1,4 +1,5 @@
 import TechBackground from "@/components/ui/TechBackground";
+import BackToTop from "@/components/ui/back-to-top";
 
 export async function generateStaticParams() {
   return [{ lang: 'en' }, { lang: 'fr' }];
@@ -14,6 +15,7 @@ export default async function LocaleLayout(props: {
     <>
       <TechBackground />
       {props.children}
+      <BackToTop />
     </>
   );
 }

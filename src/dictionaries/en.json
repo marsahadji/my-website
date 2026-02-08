@@ -4,7 +4,8 @@
     "blog": "Blog",
     "contact": "Contact",
     "services": "Services",
-    "projects": "Projects"
+    "projects": "Projects",
+    "training": "Training"
   },
   "hero": {
     "title": "Building Digital Sovereignty in Africa.",
@@ -106,5 +107,36 @@
     "privacy_title": "Privacy Policy",
     "mentions_title": "Legal Mentions",
     "last_updated": "Last updated"
+  },
+  "training": {
+    "hero_title": "MongoDB: Architecture & Performance.",
+    "value_prop": "Don't let your data control you. Design scalable and resilient NoSQL schemas.",
+    "curriculum_title": "The Expert Program",
+    "cta_waitlist": "Join the waitlist (2026 Session)",
+    "why_title": "Why this training?",
+    "why_intro": "Most developers use MongoDB like a relational database. This is the fatal mistake that kills performance.",
+    "pain_points": [
+      "Why are your queries slow as soon as volume increases?",
+      "Why are your indexes not being used as expected?",
+      "How to model complex relationships without expensive joins?"
+    ],
+    "modules": [
+      {
+        "title": "Module 1: Thinking in Documents",
+        "desc": "Schema Design, Data Modeling patterns and when (not) to normalize."
+      },
+      {
+        "title": "Module 2: Indexing & Performance Tuning",
+        "desc": "Explain Plan analysis, advanced indexing strategies and WiredTiger optimization."
+      },
+      {
+        "title": "Module 3: Architecture & High Availability",
+        "desc": "Replica Sets, Sharding, geographic zones and Atlas deployment."
+      },
+      {
+        "title": "Module 4: Aggregation Framework Mastery",
+        "desc": "Transform your data into real-time insights with complex and efficient pipelines."
+      }
+    ]
   }
 }

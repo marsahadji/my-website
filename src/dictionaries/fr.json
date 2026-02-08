@@ -4,7 +4,8 @@
     "blog": "Blog",
     "contact": "Contact",
     "services": "Services",
-    "projects": "Projets"
+    "projects": "Projets",
+    "training": "Formation"
   },
   "hero": {
     "title": "Construire la souveraineté numérique en Afrique.",
@@ -106,5 +107,36 @@
     "privacy_title": "Politique de Confidentialité",
     "mentions_title": "Mentions Légales",
     "last_updated": "Dernière mise à jour"
+  },
+  "training": {
+    "hero_title": "MongoDB : Architecture & Performance.",
+    "value_prop": "Ne subissez plus vos données. Concevez des schémas NoSQL scalables et résilients.",
+    "curriculum_title": "Le Programme Expert",
+    "cta_waitlist": "Rejoindre la liste d'attente (Session 2026)",
+    "why_title": "Pourquoi cette formation ?",
+    "why_intro": "La plupart des développeurs utilisent MongoDB comme une base relationnelle. C'est l'erreur fatale qui tue la performance.",
+    "pain_points": [
+      "Pourquoi vos requêtes sont lentes dès que le volume augmente ?",
+      "Pourquoi vos index ne sont pas utilisés comme prévu ?",
+      "Comment modéliser des relations complexes sans faire de 'joins' coûteux ?"
+    ],
+    "modules": [
+      {
+        "title": "Module 1: Thinking in Documents",
+        "desc": "Schema Design, Data Modeling patterns et quand (ne pas) normaliser."
+      },
+      {
+        "title": "Module 2: Indexing & Performance Tuning",
+        "desc": "Analyse des Explain Plans, stratégies d'indexation avancées et optimisation du WiredTiger."
+      },
+      {
+        "title": "Module 3: Architecture & Haute Disponibilité",
+        "desc": "Replica Sets, Sharding, zones géographiques et déploiement sur Atlas."
+      },
+      {
+        "title": "Module 4: Aggregation Framework Mastery",
+        "desc": "Transformer vos données en insights temps réel avec des pipelines complexes et performants."
+      }
+    ]
   }
 }

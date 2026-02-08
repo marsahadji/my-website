@@ -16,6 +16,7 @@ interface HeaderProps {
       contact: string;
       services: string;
       projects: string;
+      training: string;
     };
   };
 }
@@ -31,6 +32,7 @@ export default function Header({ dict }: HeaderProps) {
     { href: `/${lang}/about`, label: dict.nav.about },
     { href: `/${lang}/projects`, label: dict.nav.projects },
     { href: `/${lang}/services`, label: dict.nav.services },
+    { href: `/${lang}/formation/mongodb`, label: dict.nav.training },
     { href: `/${lang}/blog`, label: dict.nav.blog },
     { href: `/${lang}/contact`, label: dict.nav.contact },
   ];
