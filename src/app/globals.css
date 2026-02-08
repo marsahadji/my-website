@@ -1,26 +1,129 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-merriweather), ui-serif, Georgia, serif;
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* --- FONDATIONS (Mode Clair par défaut) --- */
+    --background: 0 0% 100%;       /* Blanc Pur */
+    --foreground: 222 47% 11%;     /* Slate 900 - Texte principal */
+
+    /* --- MARQUE PRINCIPALE : BLEU NUIT (Autorité) --- */
+    --primary: 224 64% 33%;        
+    --primary-foreground: 210 40% 98%;
+
+    /* --- ACCENT : VERT FORÊT (Croissance/Data) --- */
+    --accent: 145 63% 42%;
+    --accent-foreground: 210 40% 98%;
+
+    /* --- UI ELEMENTS (Neutral Grays) --- */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    
+    --ring: 224 64% 33%; /* Le focus ring prend la couleur Primary */
+
+    --radius: 0.5rem;
+  }
+
+  /* --- MODE SOMBRE (Préparé pour le futur) --- */
+  .dark {
+    --background: 222 47% 11%;     /* Fond Bleu Nuit Profond */
+    --foreground: 210 40% 98%;     /* Texte Blanc Cassé */
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;        /* Inversion : Le blanc devient primaire */
+    --primary-foreground: 222 47% 11%;
+
+    --accent: 142 70% 50%;         /* Vert plus lumineux pour le contraste */
+    --accent-foreground: 145 80% 10%;
+
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    
+    --ring: 212 26% 83%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+    /* Lissage de police pour un rendu "Magazine" */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Titres en Serif (Merriweather) */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-bold tracking-tight text-primary;
+  }
+  
+  /* Paragraphes aérés */
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* Personnalisation de la sélection de texte (L'effet "Wouah") */
+  ::selection {
+    background-color: hsl(var(--accent)); /* Ton Vert Forêt */
+    color: white;
+  }
+}
+
+@layer utilities {
+  /* Utilitaires pour l'équilibre typographique */
+  .text-balance {
+    text-wrap: balance;
+  }
 }
